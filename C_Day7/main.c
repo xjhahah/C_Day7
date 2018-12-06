@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <math.h>
+#include <string.h>
+#include <assert.h>
 
 //1 乘法口诀表
 void Test1()
@@ -72,11 +74,62 @@ void Test4()
 		printf("该数不是素数\n");
 	}
 }
+
+//5 创建一个数组， 实现函数init（）初始化数组、实现empty（）清空数组、实现reverse（）函数完成数组元素的逆置。
+void InitArr(int* arr,int len)
+{
+	
+	for (int i = 0; i < len; ++i)
+	{
+		arr[i] = i;
+	}
+	for (int i = 0; i < len; ++i)
+	{
+		printf("%d ", arr[i]);
+	}
+	printf("\n");
+}
+//void EmptyArr(int* arr,int len)
+//{
+//	assert(arr);
+//	for (int i = 0; i < len; ++i)
+//	{
+//		arr[i] = 0;
+//	}
+//}
+void ReserveArr(int* arr,int len)
+{
+	int left = 0;
+	int right = len - 1;
+	while (left <= right)
+	{
+		int tmp = 0;
+		tmp = arr[left];
+		arr[left] = arr[right];
+		arr[right] = tmp;
+		++left;
+		--right;
+	}
+	for (int i = 0; i < len; ++i)
+	{
+		printf("%d ", arr[i]);
+	}
+	printf("\n");
+}
+void Test5()
+{
+	int arr[10] = { 0 };
+	int len = sizeof(arr) / sizeof(arr[0]);
+	InitArr(arr,len);
+	//EmptyArr(arr,len);
+	ReserveArr(arr,len);
+}
 int main()
 {
 	//Test1();
 	//SwapTwoNum();
 	//Test3();
-	Test4();
+	//Test4();
+	Test5();
 	return 0;
 }
